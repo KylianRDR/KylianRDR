@@ -13,7 +13,10 @@
 </p>
 
 <p align="center">
-  <img src="https://komarev.com/ghpvc/?username=kylianrdr&label=Profile%20Views&color=0e75b6&style=flat" alt="Profile views" />
+  <img
+    src="https://komarev.com/ghpvc/?username=kylianrdr&label=Profile%20Views&color=0e75b6&style=flat"
+    alt="Profile views"
+  />
 </p>
 
 ---
@@ -131,15 +134,27 @@ My projects are available here on GitHub and through my personal websites.
 
 ---
 
-## GitHub
+## GitHub Statistics
 
 <p align="center">
-  <img src="./profile/stats.svg" height="180" alt="GitHub statistics" />
-  <img src="./profile/top-langs.svg" height="180" alt="Top languages" />
+  <img
+    src="./profile/stats.svg"
+    height="180"
+    alt="GitHub statistics"
+  />
+  <img
+    src="./profile/top-langs.svg"
+    height="250"
+    alt="Top languages"
+  />
 </p>
 
 <p align="center">
-  <img src="./profile/streak.svg" height="180" alt="GitHub contribution streak" />
+  <img
+    src="./profile/streak.svg"
+    height="180"
+    alt="Contribution activity"
+  />
 </p>
 
 ---
