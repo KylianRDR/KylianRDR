@@ -1,270 +1,330 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <svg
-  width="495"
-  height="250"
-  viewBox="0 0 495 250"
   xmlns="http://www.w3.org/2000/svg"
+  width="480"
+  height="328"
+  viewBox="0 0 480 328"
+  role="img"
 >
   <rect
-    x="0.5"
-    y="0.5"
-    width="494"
-    height="249"
-    rx="10"
+    width="100%"
+    height="100%"
+    rx="14"
     fill="#0d1117"
     stroke="#30363d"
   />
-
-  <text
-    x="25"
-    y="38"
-    fill="#f0f6fc"
-    font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-    font-size="18"
-    font-weight="600"
-  >
-    Top Languages
-  </text>
-
   
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="70"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            Lua
-          </text>
-
-          <rect
-            x="125"
-            y="60"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="60"
-            width="99"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="70"
-            fill="#8b949e"
-            font-size="12"
-          >
-            47%
-          </text>
-        </g>
-      
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="90"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            Vue
-          </text>
-
-          <rect
-            x="125"
-            y="80"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="80"
-            width="63"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="90"
-            fill="#8b949e"
-            font-size="12"
-          >
-            30%
-          </text>
-        </g>
-      
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="110"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            JavaScript
-          </text>
-
-          <rect
-            x="125"
-            y="100"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="100"
-            width="34"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="110"
-            fill="#8b949e"
-            font-size="12"
-          >
-            16%
-          </text>
-        </g>
-      
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="130"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            TypeScript
-          </text>
-
-          <rect
-            x="125"
-            y="120"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="120"
-            width="8"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="130"
-            fill="#8b949e"
-            font-size="12"
-          >
-            4%
-          </text>
-        </g>
-      
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="150"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            HTML
-          </text>
-
-          <rect
-            x="125"
-            y="140"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="140"
-            width="5"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="150"
-            fill="#8b949e"
-            font-size="12"
-          >
-            2%
-          </text>
-        </g>
-      
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="170"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            MDX
-          </text>
-
-          <rect
-            x="125"
-            y="160"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="160"
-            width="5"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="170"
-            fill="#8b949e"
-            font-size="12"
-          >
-            1%
-          </text>
-        </g>
-      
+<text
+  x="28"
+  y="38"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="18px"
+  font-weight="700"
+>
+  Top Languages
+</text>,
+<text
+  x="28"
+  y="70"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  Lua
+</text>,
+<text
+  x="420"
+  y="70"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  44.8%
+</text>,
+    <rect
+      x="28"
+      y="78"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="78"
+      width="188.16"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="101"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  Vue
+</text>,
+<text
+  x="420"
+  y="101"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  36.7%
+</text>,
+    <rect
+      x="28"
+      y="109"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="109"
+      width="154.14000000000001"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="132"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  JavaScript
+</text>,
+<text
+  x="420"
+  y="132"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  11.6%
+</text>,
+    <rect
+      x="28"
+      y="140"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="140"
+      width="48.72"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="163"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  TypeScript
+</text>,
+<text
+  x="420"
+  y="163"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  2.0%
+</text>,
+    <rect
+      x="28"
+      y="171"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="171"
+      width="8.4"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="194"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  CSS
+</text>,
+<text
+  x="420"
+  y="194"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  1.8%
+</text>,
+    <rect
+      x="28"
+      y="202"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="202"
+      width="7.56"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="225"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  HTML
+</text>,
+<text
+  x="420"
+  y="225"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  1.3%
+</text>,
+    <rect
+      x="28"
+      y="233"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="233"
+      width="5.46"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="256"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  PowerShell
+</text>,
+<text
+  x="420"
+  y="256"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  1.2%
+</text>,
+    <rect
+      x="28"
+      y="264"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="264"
+      width="5.04"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="287"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  SCSS
+</text>,
+<text
+  x="420"
+  y="287"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  0.7%
+</text>,
+    <rect
+      x="28"
+      y="295"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="295"
+      width="2.94"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  
 </svg>
