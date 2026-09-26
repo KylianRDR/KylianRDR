@@ -137,12 +137,12 @@ My projects are available here on GitHub and through my personal websites.
 ## GitHub Statistics
 
 <p align="center">
-  <img src="./profile/stats.svg" alt="GitHub Statistics" />
-  <img src="./profile/streak.svg" alt="GitHub Contribution Streak" />
+  <img src="https://raw.githubusercontent.com/KylianRDR/KylianRDR/main/profile/stats.svg" alt="GitHub Statistics" />
+  <img src="https://raw.githubusercontent.com/KylianRDR/KylianRDR/main/profile/streak.svg" alt="GitHub Contribution Streak" />
 </p>
 
 <p align="center">
-  <img src="./profile/top-langs.svg" alt="Top Languages" />
+  <img src="https://raw.githubusercontent.com/KylianRDR/KylianRDR/main/profile/top-langs.svg" alt="Top Languages" />
 </p>
 
 ---
