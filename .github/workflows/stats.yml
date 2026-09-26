@@ -15,20 +15,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
-          node-version: 22
+          node-version: 24
+          package-manager-cache: false
 
       - name: Generate statistics
         env:
           GITHUB_TOKEN: ${{ secrets.STATS_TOKEN }}
+          GITHUB_USERNAME: KylianRDR
         run: node scripts/generate-stats.mjs
 
-      - name: Commit changes
+      - name: Commit statistics
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

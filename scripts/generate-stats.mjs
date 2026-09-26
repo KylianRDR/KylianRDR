@@ -1,28 +1,256 @@
 import fs from "node:fs/promises";
 
-const username = "kylianrdr";
 const token = process.env.GITHUB_TOKEN;
+const username = process.env.GITHUB_USERNAME || "KylianRDR";
 
 if (!token) {
   throw new Error("GITHUB_TOKEN is missing.");
 }
 
-const headers = {
-  Authorization: `Bearer ${token}`,
-  Accept: "application/vnd.github+json",
-  "X-GitHub-Api-Version": "2022-11-28",
-};
+const endpoint = "https://api.github.com/graphql";
 
-async function github(url) {
-  const response = await fetch(url, { headers });
+async function githubGraphQL(query, variables = {}) {
+  const response = await fetch(endpoint, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      "User-Agent": "KylianRDR-profile-stats",
+    },
+    body: JSON.stringify({ query, variables }),
+  });
 
   if (!response.ok) {
-    const body = await response.text();
-    throw new Error(`GitHub API error ${response.status}: ${body}`);
+    throw new Error(
+      `GitHub GraphQL HTTP ${response.status}: ${await response.text()}`,
+    );
   }
 
-  return response.json();
+  const json = await response.json();
+
+  if (json.errors?.length) {
+    throw new Error(
+      `GitHub GraphQL error: ${json.errors.map((e) => e.message).join("; ")}`,
+    );
+  }
+
+  return json.data;
 }
+
+const userQuery = `
+query Profile($login: String!) {
+  user(login: $login) {
+    login
+    name
+    followers {
+      totalCount
+    }
+    repositories(
+      first: 100
+      ownerAffiliations: OWNER
+      orderBy: { field: UPDATED_AT, direction: DESC }
+    ) {
+      totalCount
+      nodes {
+        name
+        isPrivate
+        isFork
+        stargazerCount
+        forkCount
+        primaryLanguage {
+          name
+        }
+        languages(first: 10, orderBy: { field: SIZE, direction: DESC }) {
+          edges {
+            size
+            node {
+              name
+            }
+          }
+        }
+      }
+    }
+    contributionsCollection {
+      totalCommitContributions
+      totalIssueContributions
+      totalPullRequestContributions
+      totalRepositoryContributions
+      restrictedContributionsCount
+      contributionCalendar {
+        totalContributions
+        weeks {
+          contributionDays {
+            contributionCount
+            date
+          }
+        }
+      }
+    }
+  }
+}
+`;
+
+console.log(`Fetching GitHub statistics for ${username}...`);
+
+const data = await githubGraphQL(userQuery, {
+  login: username,
+});
+
+const user = data.user;
+
+if (!user) {
+  throw new Error(`GitHub user "${username}" not found.`);
+}
+
+const contributions = user.contributionsCollection;
+const calendar = contributions.contributionCalendar;
+
+const days = calendar.weeks.flatMap((week) => week.contributionDays);
+
+function calculateStreaks(days) {
+  const sorted = [...days].sort((a, b) => a.date.localeCompare(b.date));
+
+  const activeDays = sorted.filter((day) => day.contributionCount > 0);
+
+  let longest = 0;
+  let current = 0;
+
+  for (let i = 0; i < activeDays.length; i++) {
+    if (i === 0) {
+      current = 1;
+    } else {
+      const previous = new Date(`${activeDays[i - 1].date}T00:00:00Z`);
+      const currentDate = new Date(`${activeDays[i].date}T00:00:00Z`);
+
+      const diff = (currentDate - previous) / (1000 * 60 * 60 * 24);
+
+      if (diff === 1) {
+        current++;
+      } else {
+        current = 1;
+      }
+    }
+
+    longest = Math.max(longest, current);
+  }
+
+  const today = new Date();
+  today.setUTCHours(0, 0, 0, 0);
+
+  const yesterday = new Date(today);
+  yesterday.setUTCDate(yesterday.getUTCDate() - 1);
+
+  const dateMap = new Map(
+    sorted.map((day) => [day.date, day.contributionCount]),
+  );
+
+  let cursor = today;
+
+  const todayKey = cursor.toISOString().slice(0, 10);
+
+  if (!dateMap.get(todayKey)) {
+    cursor = yesterday;
+  }
+
+  let currentStreak = 0;
+
+  while (true) {
+    const key = cursor.toISOString().slice(0, 10);
+
+    if (!dateMap.get(key)) {
+      break;
+    }
+
+    currentStreak++;
+
+    cursor.setUTCDate(cursor.getUTCDate() - 1);
+  }
+
+  return {
+    current: currentStreak,
+    longest,
+  };
+}
+
+const streak = calculateStreaks(days);
+
+const languages = new Map();
+
+for (const repo of user.repositories.nodes) {
+  if (repo.isFork) continue;
+
+  for (const edge of repo.languages.edges) {
+    const name = edge.node.name;
+    const size = edge.size;
+
+    languages.set(name, (languages.get(name) || 0) + size);
+  }
+}
+
+const topLanguages = [...languages.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 8);
+
+const totalLanguageBytes = topLanguages.reduce(
+  (sum, [, size]) => sum + size,
+  0,
+);
+
+const languageRows = topLanguages.map(([name, size]) => {
+  const percentage =
+    totalLanguageBytes > 0
+      ? ((size / totalLanguageBytes) * 100).toFixed(1)
+      : "0.0";
+
+  return {
+    name,
+    percentage,
+  };
+});
+
+const repoCount = user.repositories.totalCount;
+
+const publicRepos = user.repositories.nodes.filter(
+  (repo) => !repo.isPrivate,
+).length;
+
+const privateRepos = user.repositories.nodes.filter(
+  (repo) => repo.isPrivate,
+).length;
+
+const totalStars = user.repositories.nodes.reduce(
+  (sum, repo) => sum + repo.stargazerCount,
+  0,
+);
+
+const totalForks = user.repositories.nodes.reduce(
+  (sum, repo) => sum + repo.forkCount,
+  0,
+);
+
+const stats = {
+  contributions: calendar.totalContributions,
+  commits: contributions.totalCommitContributions,
+  pullRequests: contributions.totalPullRequestContributions,
+  issues: contributions.totalIssueContributions,
+  repositories: repoCount,
+  publicRepositories: publicRepos,
+  privateRepositories: privateRepos,
+  stars: totalStars,
+  forks: totalForks,
+  followers: user.followers.totalCount,
+  restrictedContributions: contributions.restrictedContributionsCount,
+  currentStreak: streak.current,
+  longestStreak: streak.longest,
+};
+
+console.log("\nGitHub statistics:");
+console.table(stats);
+
+console.log("\nTop languages:");
+console.table(languageRows);
+
+await fs.mkdir("profile", { recursive: true });
 
 function escapeXml(value) {
   return String(value)
@@ -33,258 +261,122 @@ function escapeXml(value) {
     .replaceAll("'", "&apos;");
 }
 
-function createSvg({ title, width = 495, height = 180, body }) {
-  return `<?xml version="1.0" encoding="UTF-8"?>
+function svgDocument(width, height, body) {
+  return `
 <svg
+  xmlns="http://www.w3.org/2000/svg"
   width="${width}"
   height="${height}"
   viewBox="0 0 ${width} ${height}"
-  xmlns="http://www.w3.org/2000/svg"
+  role="img"
 >
   <rect
-    x="0.5"
-    y="0.5"
-    width="${width - 1}"
-    height="${height - 1}"
-    rx="10"
+    width="100%"
+    height="100%"
+    rx="14"
     fill="#0d1117"
     stroke="#30363d"
   />
-
-  <text
-    x="25"
-    y="38"
-    fill="#f0f6fc"
-    font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-    font-size="18"
-    font-weight="600"
-  >
-    ${escapeXml(title)}
-  </text>
-
   ${body}
-</svg>`;
+</svg>
+`.trim();
 }
 
-async function getRepositories() {
-  const repositories = [];
-
-  for (let page = 1; page <= 10; page++) {
-    const data = await github(
-      `https://api.github.com/user/repos?per_page=100&page=${page}&affiliation=owner,collaborator,organization_member&sort=updated`,
-    );
-
-    repositories.push(...data);
-
-    if (data.length < 100) {
-      break;
-    }
-  }
-
-  return repositories;
+function text(x, y, value, size = 14, weight = 400, fill = "#e6edf3") {
+  return `
+<text
+  x="${x}"
+  y="${y}"
+  fill="${fill}"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="${size}px"
+  font-weight="${weight}"
+>
+  ${escapeXml(value)}
+</text>`;
 }
 
-async function getUser() {
-  return github(`https://api.github.com/user`);
-}
+const statsItems = [
+  ["Contributions", stats.contributions],
+  ["Commits", stats.commits],
+  ["Pull Requests", stats.pullRequests],
+  ["Issues", stats.issues],
+  ["Repositories", stats.repositories],
+  ["Stars", stats.stars],
+];
 
-function createStatsSvg(user, repositories) {
-  const ownedRepositories = repositories.filter(
-    (repo) => repo.owner?.login === username,
+const statsBody = [
+  text(28, 38, "GitHub Statistics", 18, 700),
+  ...statsItems.flatMap(([label, value], index) => {
+    const column = index % 3;
+    const row = Math.floor(index / 3);
+
+    const x = 28 + column * 165;
+    const y = 82 + row * 65;
+
+    return [
+      text(x, y, String(value), 24, 700),
+      text(x, y + 23, label, 12, 400, "#8b949e"),
+    ];
+  }),
+];
+
+await fs.writeFile("profile/stats.svg", svgDocument(520, 220, statsBody));
+
+const streakBody = [
+  text(28, 38, "Contribution Streak", 18, 700),
+
+  text(28, 92, String(stats.currentStreak), 30, 700),
+  text(28, 116, "Current streak", 12, 400, "#8b949e"),
+
+  text(190, 92, String(stats.longestStreak), 30, 700),
+  text(190, 116, "Longest streak", 12, 400, "#8b949e"),
+
+  text(350, 92, String(stats.restrictedContributions), 30, 700),
+  text(350, 116, "Private contributions", 12, 400, "#8b949e"),
+];
+
+await fs.writeFile("profile/streak.svg", svgDocument(520, 155, streakBody));
+
+const languageBody = [text(28, 38, "Top Languages", 18, 700)];
+
+languageRows.forEach((language, index) => {
+  const y = 70 + index * 31;
+
+  languageBody.push(
+    text(28, y, language.name, 13, 600),
+    text(420, y, `${language.percentage}%`, 13, 400, "#8b949e"),
   );
 
-  const stars = ownedRepositories.reduce(
-    (total, repo) => total + repo.stargazers_count,
-    0,
-  );
+  languageBody.push(`
+    <rect
+      x="28"
+      y="${y + 8}"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  `);
 
-  const forks = ownedRepositories.reduce(
-    (total, repo) => total + repo.forks_count,
-    0,
-  );
+  languageBody.push(`
+    <rect
+      x="28"
+      y="${y + 8}"
+      width="${Math.max(2, (420 * Number(language.percentage)) / 100)}"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  `);
+});
 
-  const privateRepositories = ownedRepositories.filter(
-    (repo) => repo.private,
-  ).length;
-
-  const publicRepositories = ownedRepositories.filter(
-    (repo) => !repo.private,
-  ).length;
-
-  const body = `
-    <g
-      font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-    >
-      <text x="25" y="75" fill="#8b949e" font-size="13">
-        Repositories
-      </text>
-      <text x="25" y="98" fill="#f0f6fc" font-size="20" font-weight="600">
-        ${ownedRepositories.length}
-      </text>
-
-      <text x="180" y="75" fill="#8b949e" font-size="13">
-        Public
-      </text>
-      <text x="180" y="98" fill="#f0f6fc" font-size="20" font-weight="600">
-        ${publicRepositories}
-      </text>
-
-      <text x="335" y="75" fill="#8b949e" font-size="13">
-        Private
-      </text>
-      <text x="335" y="98" fill="#f0f6fc" font-size="20" font-weight="600">
-        ${privateRepositories}
-      </text>
-
-      <text x="25" y="135" fill="#8b949e" font-size="13">
-        Stars
-      </text>
-      <text x="25" y="158" fill="#f0f6fc" font-size="20" font-weight="600">
-        ${stars}
-      </text>
-
-      <text x="180" y="135" fill="#8b949e" font-size="13">
-        Forks
-      </text>
-      <text x="180" y="158" fill="#f0f6fc" font-size="20" font-weight="600">
-        ${forks}
-      </text>
-
-      <text x="335" y="135" fill="#8b949e" font-size="13">
-        Followers
-      </text>
-      <text x="335" y="158" fill="#f0f6fc" font-size="20" font-weight="600">
-        ${user.followers}
-      </text>
-    </g>
-  `;
-
-  return createSvg({
-    title: "GitHub Statistics",
-    body,
-  });
-}
-
-function createLanguagesSvg(repositories) {
-  const languages = new Map();
-
-  for (const repo of repositories) {
-    if (repo.fork) continue;
-
-    const language = repo.language;
-
-    if (!language) continue;
-
-    languages.set(language, (languages.get(language) || 0) + 1);
-  }
-
-  const sorted = [...languages.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 8);
-
-  const total = sorted.reduce((sum, [, count]) => sum + count, 0);
-
-  const rows = sorted
-    .map(([language, count], index) => {
-      const percentage = total ? Math.round((count / total) * 100) : 0;
-
-      const y = 70 + index * 20;
-      const barWidth = Math.max(5, Math.round((percentage / 100) * 210));
-
-      return `
-        <g
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-        >
-          <text
-            x="25"
-            y="${y}"
-            fill="#c9d1d9"
-            font-size="12"
-          >
-            ${escapeXml(language)}
-          </text>
-
-          <rect
-            x="125"
-            y="${y - 10}"
-            width="210"
-            height="8"
-            rx="4"
-            fill="#21262d"
-          />
-
-          <rect
-            x="125"
-            y="${y - 10}"
-            width="${barWidth}"
-            height="8"
-            rx="4"
-            fill="#58a6ff"
-          />
-
-          <text
-            x="350"
-            y="${y}"
-            fill="#8b949e"
-            font-size="12"
-          >
-            ${percentage}%
-          </text>
-        </g>
-      `;
-    })
-    .join("");
-
-  return createSvg({
-    title: "Top Languages",
-    height: 250,
-    body: rows,
-  });
-}
-
-function createStreakSvg() {
-  const contributions = [
-    "Contributions are tracked",
-    "directly through GitHub",
-    "and refreshed automatically",
-  ];
-
-  const body = contributions
-    .map(
-      (line, index) => `
-        <text
-          x="25"
-          y="${75 + index * 25}"
-          fill="${index === 0 ? "#f0f6fc" : "#8b949e"}"
-          font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif"
-          font-size="${index === 0 ? 16 : 14}"
-          font-weight="${index === 0 ? 600 : 400}"
-        >
-          ${escapeXml(line)}
-        </text>
-      `,
-    )
-    .join("");
-
-  return createSvg({
-    title: "Contribution Activity",
-    body,
-  });
-}
-
-await fs.mkdir("profile", { recursive: true });
-
-const user = await getUser();
-const repositories = await getRepositories();
-
-const stats = createStatsSvg(user, repositories);
-const languages = createLanguagesSvg(repositories);
-const streak = createStreakSvg();
-
-await fs.writeFile("profile/stats.svg", stats);
-await fs.writeFile("profile/top-langs.svg", languages);
-await fs.writeFile("profile/streak.svg", streak);
-
-console.log(
-  `Generated statistics for ${username}: ${repositories.length} repositories found.`,
+await fs.writeFile(
+  "profile/top-langs.svg",
+  svgDocument(480, 80 + languageRows.length * 31, languageBody),
 );
+
+console.log("\nGenerated:");
+console.log("  profile/stats.svg");
+console.log("  profile/top-langs.svg");
+console.log("  profile/streak.svg");

@@ -137,24 +137,12 @@ My projects are available here on GitHub and through my personal websites.
 ## GitHub Statistics
 
 <p align="center">
-  <img
-    src="./profile/stats.svg"
-    height="180"
-    alt="GitHub statistics"
-  />
-  <img
-    src="./profile/top-langs.svg"
-    height="250"
-    alt="Top languages"
-  />
+  <img src="./profile/stats.svg" alt="GitHub Statistics" />
+  <img src="./profile/streak.svg" alt="GitHub Contribution Streak" />
 </p>
 
 <p align="center">
-  <img
-    src="./profile/streak.svg"
-    height="180"
-    alt="Contribution activity"
-  />
+  <img src="./profile/top-langs.svg" alt="Top Languages" />
 </p>
 
 ---
