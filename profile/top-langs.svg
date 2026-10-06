@@ -31,7 +31,7 @@
   font-size="13px"
   font-weight="600"
 >
-  Lua
+  TypeScript
 </text>,
 <text
   x="420"
@@ -41,7 +41,7 @@
   font-size="13px"
   font-weight="400"
 >
-  36.0%
+  30.3%
 </text>,
     <rect
       x="28"
@@ -55,7 +55,7 @@
     <rect
       x="28"
       y="78"
-      width="151.2"
+      width="127.26"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -64,6 +64,44 @@
 <text
   x="28"
   y="101"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  Lua
+</text>,
+<text
+  x="420"
+  y="101"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  29.5%
+</text>,
+    <rect
+      x="28"
+      y="109"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="109"
+      width="123.9"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="132"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -73,51 +111,13 @@
 </text>,
 <text
   x="420"
-  y="101"
-  fill="#8b949e"
-  font-family="Arial, Helvetica, sans-serif"
-  font-size="13px"
-  font-weight="400"
->
-  33.2%
-</text>,
-    <rect
-      x="28"
-      y="109"
-      width="420"
-      height="5"
-      rx="3"
-      fill="#21262d"
-    />
-  ,
-    <rect
-      x="28"
-      y="109"
-      width="139.44000000000003"
-      height="5"
-      rx="3"
-      fill="#58a6ff"
-    />
-  ,
-<text
-  x="28"
-  y="132"
-  fill="#e6edf3"
-  font-family="Arial, Helvetica, sans-serif"
-  font-size="13px"
-  font-weight="600"
->
-  TypeScript
-</text>,
-<text
-  x="420"
   y="132"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  15.1%
+  27.0%
 </text>,
     <rect
       x="28"
@@ -131,7 +131,7 @@
     <rect
       x="28"
       y="140"
-      width="63.42"
+      width="113.4"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -155,7 +155,7 @@
   font-size="13px"
   font-weight="400"
 >
-  11.5%
+  9.5%
 </text>,
     <rect
       x="28"
@@ -169,7 +169,7 @@
     <rect
       x="28"
       y="171"
-      width="48.3"
+      width="39.9"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -231,7 +231,7 @@
   font-size="13px"
   font-weight="400"
 >
-  1.1%
+  0.9%
 </text>,
     <rect
       x="28"
@@ -245,7 +245,7 @@
     <rect
       x="28"
       y="233"
-      width="4.620000000000001"
+      width="3.78"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -269,7 +269,7 @@
   font-size="13px"
   font-weight="400"
 >
-  1.0%
+  0.8%
 </text>,
     <rect
       x="28"
@@ -283,7 +283,7 @@
     <rect
       x="28"
       y="264"
-      width="4.2"
+      width="3.36"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -307,7 +307,7 @@
   font-size="13px"
   font-weight="400"
 >
-  0.5%
+  0.4%
 </text>,
     <rect
       x="28"
@@ -321,7 +321,7 @@
     <rect
       x="28"
       y="295"
-      width="2.1"
+      width="2"
       height="5"
       rx="3"
       fill="#58a6ff"
