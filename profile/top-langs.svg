@@ -31,7 +31,7 @@
   font-size="13px"
   font-weight="600"
 >
-  TypeScript
+  C
 </text>,
 <text
   x="420"
@@ -41,7 +41,7 @@
   font-size="13px"
   font-weight="400"
 >
-  40.8%
+  53.5%
 </text>,
     <rect
       x="28"
@@ -55,7 +55,7 @@
     <rect
       x="28"
       y="78"
-      width="171.36"
+      width="224.7"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -69,7 +69,7 @@
   font-size="13px"
   font-weight="600"
 >
-  Lua
+  TypeScript
 </text>,
 <text
   x="420"
@@ -79,7 +79,7 @@
   font-size="13px"
   font-weight="400"
 >
-  23.4%
+  19.0%
 </text>,
     <rect
       x="28"
@@ -93,7 +93,7 @@
     <rect
       x="28"
       y="109"
-      width="98.28"
+      width="79.8"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -117,7 +117,7 @@
   font-size="13px"
   font-weight="400"
 >
-  23.2%
+  10.8%
 </text>,
     <rect
       x="28"
@@ -131,7 +131,7 @@
     <rect
       x="28"
       y="140"
-      width="97.44"
+      width="45.36"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -140,6 +140,44 @@
 <text
   x="28"
   y="163"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  Lua
+</text>,
+<text
+  x="420"
+  y="163"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  10.7%
+</text>,
+    <rect
+      x="28"
+      y="171"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="171"
+      width="44.94"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="194"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -149,17 +187,17 @@
 </text>,
 <text
   x="420"
-  y="163"
+  y="194"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  7.6%
+  3.6%
 </text>,
     <rect
       x="28"
-      y="171"
+      y="202"
       width="420"
       height="5"
       rx="3"
@@ -168,8 +206,8 @@
   ,
     <rect
       x="28"
-      y="171"
-      width="31.92"
+      y="202"
+      width="15.12"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -177,7 +215,7 @@
   ,
 <text
   x="28"
-  y="194"
+  y="225"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -187,51 +225,13 @@
 </text>,
 <text
   x="420"
-  y="194"
-  fill="#8b949e"
-  font-family="Arial, Helvetica, sans-serif"
-  font-size="13px"
-  font-weight="400"
->
-  1.9%
-</text>,
-    <rect
-      x="28"
-      y="202"
-      width="420"
-      height="5"
-      rx="3"
-      fill="#21262d"
-    />
-  ,
-    <rect
-      x="28"
-      y="202"
-      width="7.98"
-      height="5"
-      rx="3"
-      fill="#58a6ff"
-    />
-  ,
-<text
-  x="28"
-  y="225"
-  fill="#e6edf3"
-  font-family="Arial, Helvetica, sans-serif"
-  font-size="13px"
-  font-weight="600"
->
-  Kotlin
-</text>,
-<text
-  x="420"
   y="225"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  1.6%
+  0.9%
 </text>,
     <rect
       x="28"
@@ -245,7 +245,7 @@
     <rect
       x="28"
       y="233"
-      width="6.72"
+      width="3.78"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -259,7 +259,7 @@
   font-size="13px"
   font-weight="600"
 >
-  HTML
+  C++
 </text>,
 <text
   x="420"
@@ -297,7 +297,7 @@
   font-size="13px"
   font-weight="600"
 >
-  PowerShell
+  Kotlin
 </text>,
 <text
   x="420"
@@ -307,7 +307,7 @@
   font-size="13px"
   font-weight="400"
 >
-  0.6%
+  0.7%
 </text>,
     <rect
       x="28"
@@ -321,7 +321,7 @@
     <rect
       x="28"
       y="295"
-      width="2.52"
+      width="2.94"
       height="5"
       rx="3"
       fill="#58a6ff"
