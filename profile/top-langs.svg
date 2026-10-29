@@ -31,7 +31,7 @@
   font-size="13px"
   font-weight="600"
 >
-  C
+  C++
 </text>,
 <text
   x="420"
@@ -41,7 +41,7 @@
   font-size="13px"
   font-weight="400"
 >
-  53.5%
+  36.0%
 </text>,
     <rect
       x="28"
@@ -55,7 +55,7 @@
     <rect
       x="28"
       y="78"
-      width="224.7"
+      width="151.2"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -64,6 +64,44 @@
 <text
   x="28"
   y="101"
+  fill="#e6edf3"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="600"
+>
+  C
+</text>,
+<text
+  x="420"
+  y="101"
+  fill="#8b949e"
+  font-family="Arial, Helvetica, sans-serif"
+  font-size="13px"
+  font-weight="400"
+>
+  34.8%
+</text>,
+    <rect
+      x="28"
+      y="109"
+      width="420"
+      height="5"
+      rx="3"
+      fill="#21262d"
+    />
+  ,
+    <rect
+      x="28"
+      y="109"
+      width="146.15999999999997"
+      height="5"
+      rx="3"
+      fill="#58a6ff"
+    />
+  ,
+<text
+  x="28"
+  y="132"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -73,17 +111,17 @@
 </text>,
 <text
   x="420"
-  y="101"
+  y="132"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  19.0%
+  12.2%
 </text>,
     <rect
       x="28"
-      y="109"
+      y="140"
       width="420"
       height="5"
       rx="3"
@@ -92,8 +130,8 @@
   ,
     <rect
       x="28"
-      y="109"
-      width="79.8"
+      y="140"
+      width="51.24"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -101,7 +139,7 @@
   ,
 <text
   x="28"
-  y="132"
+  y="163"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -111,17 +149,17 @@
 </text>,
 <text
   x="420"
-  y="132"
+  y="163"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  10.8%
+  6.9%
 </text>,
     <rect
       x="28"
-      y="140"
+      y="171"
       width="420"
       height="5"
       rx="3"
@@ -130,8 +168,8 @@
   ,
     <rect
       x="28"
-      y="140"
-      width="45.36"
+      y="171"
+      width="28.98"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -139,7 +177,7 @@
   ,
 <text
   x="28"
-  y="163"
+  y="194"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -149,17 +187,17 @@
 </text>,
 <text
   x="420"
-  y="163"
+  y="194"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  10.7%
+  6.8%
 </text>,
     <rect
       x="28"
-      y="171"
+      y="202"
       width="420"
       height="5"
       rx="3"
@@ -168,8 +206,8 @@
   ,
     <rect
       x="28"
-      y="171"
-      width="44.94"
+      y="202"
+      width="28.56"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -177,7 +215,7 @@
   ,
 <text
   x="28"
-  y="194"
+  y="225"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -187,17 +225,17 @@
 </text>,
 <text
   x="420"
-  y="194"
+  y="225"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  3.6%
+  2.2%
 </text>,
     <rect
       x="28"
-      y="202"
+      y="233"
       width="420"
       height="5"
       rx="3"
@@ -206,8 +244,8 @@
   ,
     <rect
       x="28"
-      y="202"
-      width="15.12"
+      y="233"
+      width="9.240000000000002"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -215,7 +253,7 @@
   ,
 <text
   x="28"
-  y="225"
+  y="256"
   fill="#e6edf3"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
@@ -225,51 +263,13 @@
 </text>,
 <text
   x="420"
-  y="225"
-  fill="#8b949e"
-  font-family="Arial, Helvetica, sans-serif"
-  font-size="13px"
-  font-weight="400"
->
-  0.9%
-</text>,
-    <rect
-      x="28"
-      y="233"
-      width="420"
-      height="5"
-      rx="3"
-      fill="#21262d"
-    />
-  ,
-    <rect
-      x="28"
-      y="233"
-      width="3.78"
-      height="5"
-      rx="3"
-      fill="#58a6ff"
-    />
-  ,
-<text
-  x="28"
-  y="256"
-  fill="#e6edf3"
-  font-family="Arial, Helvetica, sans-serif"
-  font-size="13px"
-  font-weight="600"
->
-  C++
-</text>,
-<text
-  x="420"
   y="256"
   fill="#8b949e"
   font-family="Arial, Helvetica, sans-serif"
   font-size="13px"
   font-weight="400"
 >
-  0.8%
+  0.6%
 </text>,
     <rect
       x="28"
@@ -283,7 +283,7 @@
     <rect
       x="28"
       y="264"
-      width="3.36"
+      width="2.52"
       height="5"
       rx="3"
       fill="#58a6ff"
@@ -307,7 +307,7 @@
   font-size="13px"
   font-weight="400"
 >
-  0.7%
+  0.5%
 </text>,
     <rect
       x="28"
@@ -321,7 +321,7 @@
     <rect
       x="28"
       y="295"
-      width="2.94"
+      width="2.1"
       height="5"
       rx="3"
       fill="#58a6ff"
